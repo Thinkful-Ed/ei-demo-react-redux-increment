@@ -1,9 +1,9 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-import store from './store';
 import {increment, decrement} from './actions';
 
-export default class Controls extends React.Component {
+class Controls extends React.Component {
     render() {
         return (
             <form onSubmit={e => e.preventDefault()}>
@@ -16,7 +16,7 @@ export default class Controls extends React.Component {
                 <button
                     type="button"
                     onClick={() =>
-                        store.dispatch(
+                        this.props.dispatch(
                             increment(parseInt(this.amount.value, 10))
                         )
                     }>
@@ -25,7 +25,7 @@ export default class Controls extends React.Component {
                 <button
                     type="button"
                     onClick={() =>
-                        store.dispatch(
+                        this.props.dispatch(
                             decrement(parseInt(this.amount.value, 10))
                         )
                     }>
@@ -35,3 +35,5 @@ export default class Controls extends React.Component {
         );
     }
 }
+
+export default connect()(Controls);
