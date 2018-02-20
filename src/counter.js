@@ -1,5 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-export default function Counter(props) {
+function Counter(props) {
     return <div className="counter">Count: {props.counter}</div>;
 }
+
+export default connect()(Counter);
